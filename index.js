@@ -1,86 +1,48 @@
-let hr = 0;
-let min = 0;
-let sec = 0;
-let msec = 0;
-// by defualt timer is false
-let timer = false;
-// after clicking on start btn timer get true and start running
-function start(){
-    timer = true;
-    stopWatch();
-}
-// after clicking on reset btn timer set defualt and reset everything
-function reset(){
-    timer = false;
-    hr = 0;
-    min = 0;
-    sec = 0;
-    msec = 0;
-// displaying String value "00" on reset position
-        document.getElementById("hr").innerHTML = "00";
-        
-        document.getElementById("min").innerHTML = "00";
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stop Watch</title>
+    <!-- import css file -->
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <!-- main container -->
+    <div id="container">
+      <!-- Time container -->
+      <!-- hr, min, sec, msec -->
+      <div id="time">
+        <span class="digit" id="hr">00</span>
+        <!-- colon only display in small devices -->
+        <span class="colon">:</span>
+        <span class="text">Hr</span>
 
-        document.getElementById("sec").innerHTML = "00";
+        <span class="digit" id="min">00</span>
 
-        document.getElementById("msec").innerHTML = "00";
-}
+        <!-- colon only display in small devices -->
+        <span class="colon">:</span>
+        <span class="text">Min</span>
 
-function stop(){
-    timer = false;
-}
+        <span class="digit" id="sec">00</span>
+        <span class="text">Sec</span>
 
-function stopWatch(){
-// timer get true and increase msec by 1.
-    if(timer == true){
-        msec += 1;
-// when msec reach 100 inceaesing the sec value and reset the msc value at 0 .
-    if(msec == 100){
-        sec += 1;
-        msec = 0;
-    }
-// when sec reach 60 inceaesing the min value and reset the sec value at 0.
-    if(sec == 60){
-        min += 1;
-        sec = 0;
-    }
-// when min reach 60 inceaesing the hr value and reset the sec and msc value at 0.
-    if(min == 60){
-        hr += 1;
-        min = 0;
-        sec = 0;
-    }
+        <span class="digit" id="msec">00</span>
+      </div>
 
-    let hrstr = hr;
-    let minstr = min;
-    let secstr = sec;
-    let msecstr = msec;
+      <!-- btns-container -->
+      <div id="btns-container">
+        <!-- Start button -->
+        <button id="start" class="buttons" onclick="start()">START</button>
+        <!-- Reset button -->
+        <button id="reset" class="buttons" onclick="reset()">RESET</button>
+        <!-- Stop btn -->
+        <button id="stop" class="buttons" onclick="stop()">STOP</button>
+      </div>
+    </div>
 
-    if(hrstr < 10){
-        hrstr = "0" + hrstr;
-    }
-    
-    if(minstr < 10){
-        minstr = "0" + minstr;
-    }
-
-    if(secstr < 10){
-        secstr = "0" + secstr;
-    }
-
-    if(msecstr < 10){
-        msecstr = "0" + msecstr;
-    }
-
-
-        document.getElementById("hr").innerHTML = hrstr;
-        
-        document.getElementById("min").innerHTML = minstr;
-
-        document.getElementById("sec").innerHTML = secstr;
-
-        document.getElementById("msec").innerHTML = msecstr;
-
-        setTimeout("stopWatch()",10);
-    }
-}
+    <!-- import javaScript file -->
+    <script src="./index.js"></script>
+  </body>
+</html>
